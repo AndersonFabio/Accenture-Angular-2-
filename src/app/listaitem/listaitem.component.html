@@ -1,0 +1,40 @@
+  
+<div style="text-align: center;"><h2>{{itemLista.listaTarefa.descricao}}</h2></div>
+<div class="container">
+    <br>
+    <div class="row">
+    <div class="col-md-3">
+     <span style="font-weight: bold;font-size: 17px;">Selecione um Item:</span>
+     </div>
+    <div class="col-md-5">
+        <select [(ngModel)]="itemLista.item.id" style="width:100%;"  placeholder="Selecione" class="form-control">
+            <option *ngFor="let item of itens" [value]="item.id" class="form-control">{{item.descricao}}</option>
+         </select>
+    </div>
+    <div class="col-md-1">
+     <input type="button" (click)="add(itemLista)" value="Adicionar" class="btn btn-primary"/>
+    </div>
+    </div>
+
+    <br>
+  
+     <div>
+         <div *ngIf='itemListas' >
+            <div class="row"  style="background-color: black;color: white;font-weight: bold;">
+                <div class="col-md-1"></div> 
+                    <div class="col-md-9">Descrição</div>
+                     <div class="col-md-2"></div>
+            </div>
+             <div *ngFor='let itemLista of itemListas' class="row">
+                <div class="col-md-1"><input 
+                    type="checkbox"
+                    [checked]="itemLista.concluido"
+                    (change)="check(itemLista)"/></div>
+                <div class="col-md-9"><label>{{itemLista.item.descricao}}</label></div>
+                 <div class="col-md-2" style="text-align: right;"><button  (click)="remove(itemLista)" class="btn btn-primary">Delete</button></div>
+                 
+                 <hr>
+            </div>
+         </div>
+</div>
+</div>
